@@ -61,10 +61,11 @@
     <bean id="stringEncryptionService" class="org.jasig.portal.security.JasyptPBEStringEncryptionServiceImpl">
         <property name="stringEncryptor">
             <bean class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
-                
-                <!-- Before using the string encryption service you must
-                    first set a password -->
-                <!--<property name="password" value="changeme"/>-->
+
+                <!-- Before using the string encryption service you should first set a password.  The default
+                     password works but is not secure.
+                -->
+                <property name="password" value="${org.jasig.portal.portlets.passwordEncryptionKey}"/>
                 
                 <!-- 
                     Example BouncyCastle-powered AES encryption

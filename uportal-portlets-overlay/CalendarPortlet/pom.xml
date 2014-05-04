@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jasig.portal.portlets-overlay</groupId>
         <artifactId>uportal-portlets-overlay</artifactId>
-        <version>4.0.13</version>
+        <version>4.0.14-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -30,6 +30,12 @@
             <classifier>classes</classifier>
             <type>jar</type>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>xalan</groupId>
+                    <artifactId>serializer</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -125,6 +131,12 @@
                         <classifier>classes</classifier>
                         <type>jar</type>
                         <scope>compile</scope>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>xalan</groupId>
+                                <artifactId>serializer</artifactId>
+                            </exclusion>
+                        </exclusions>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -152,6 +164,12 @@
                         <classifier>classes</classifier>
                         <type>jar</type>
                         <scope>compile</scope>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>xalan</groupId>
+                                <artifactId>serializer</artifactId>
+                            </exclusion>
+                        </exclusions>
                     </dependency>
                 </dependencies>
                 <configuration>

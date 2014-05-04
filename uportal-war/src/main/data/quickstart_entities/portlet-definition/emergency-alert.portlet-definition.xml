@@ -30,7 +30,10 @@
         <ns2:webAppName>/NotificationPortlet</ns2:webAppName>
         <ns2:portletName>EmergencyAlert</ns2:portletName>
     </portlet-descriptor>
+<<<<<<< HEAD
     <category>Démonstration</category>
+=======
+>>>>>>> jasig/rel-4-0-patches
     <group>Everyone</group>
     <parameter>
         <name>hasHelp</name>

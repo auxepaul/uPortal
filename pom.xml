@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jasig.parent</groupId>
         <artifactId>jasig-parent</artifactId>
-        <version>34</version>
+        <version>35</version>
     </parent>
     
     <prerequisites>
@@ -14,7 +14,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jasig.portal</groupId>
     <artifactId>uportal-parent</artifactId>
-    <version>4.0.13</version>
+    <version>4.0.14-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>uPortal Parent</name>
@@ -25,7 +25,7 @@
         <connection>scm:git:git://github.com/Jasig/uPortal.git</connection>
         <developerConnection>scm:git:git@github.com:Jasig/uPortal.git</developerConnection>
         <url>https://github.com/Jasig/uPortal</url>
-      <tag>uportal-4.0.13</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>
@@ -87,7 +87,7 @@
         <!-- The final name of the uPortal web-application -->
         <uportal.docbase>uPortal</uportal.docbase>
         <project-site-path>/uportal/${project.version}</project-site-path>
-        
+
         <!-- The JDBC Driver used by uPortal -->
         
         <!-- HSQL driver. Uncomment if you need to -->
@@ -126,16 +126,17 @@
         <filters.file>filters/${env}.properties</filters.file>
 
         <!-- WAR Dependency Version Properties -->
-        <AnnouncementsPortlet.version>2.0.0-M3</AnnouncementsPortlet.version>
+        <AnnouncementsPortlet.version>2.0.0</AnnouncementsPortlet.version>
         <BookmarksPortlet.version>1.0.11</BookmarksPortlet.version>
-        <CalendarPortlet.version>2.1.3-M1</CalendarPortlet.version>
-        <cas-server.version>3.4.11</cas-server.version>
+        <CalendarPortlet.version>2.1.3-M4</CalendarPortlet.version>
+        <cas-server.version>3.5.2.1</cas-server.version>
         <cas-proxy-test-portlet.version>1.0.0-RC3</cas-proxy-test-portlet.version>
-        <email-preview.version>2.1.0</email-preview.version>
+        <email-preview.version>2.1.1-M1</email-preview.version>
         <FunctionalTestsPortlet.version>1.1.0</FunctionalTestsPortlet.version>
         <jasig-widget-portlets.version>2.0.0-M1</jasig-widget-portlets.version> <!-- TODO ESUP
         supprimer uportal-portlets-overlay/jasig-widget-portlets/src/main/webapp/WEB-INF/jsp/tips-display.jsp
         si https://github.com/Jasig/JasigWidgetPortlets/pull/6 OK -->
+        <jasig-widget-portlets.version>2.0.1</jasig-widget-portlets.version>
         <NewsReaderPortlet.version>3.0.7</NewsReaderPortlet.version>
         <NotificationPortlet.version>2.0.3</NotificationPortlet.version>
         <SimpleContentPortlet.version>1.0.7</SimpleContentPortlet.version>
@@ -148,7 +149,6 @@
         <ant.version>1.8.4</ant.version>
         <aspectjrt.version>1.7.3</aspectjrt.version>
         <aspectjweaver.version>1.7.3</aspectjweaver.version>
-        <cas-clearpass.version>1.0.8.GA</cas-clearpass.version>
         <casclient.version>3.2.1</casclient.version>
         <ccpp.version>1.0</ccpp.version>
         <cernunnos.version>1.2.2</cernunnos.version>
@@ -186,7 +186,7 @@
         <jackson2.version>2.2.2</jackson2.version>
         <jansi.version>1.8</jansi.version>
         <javassist.version>3.18.0-GA</javassist.version>
-        <jasig-portlet-utils.version>1.1.0</jasig-portlet-utils.version> 
+        <jasig-portlet-utils.version>1.1.0</jasig-portlet-utils.version>
         <jasypt.version>1.9.0</jasypt.version>
         <jaxb2basics.version>0.6.4</jaxb2basics.version>
         <jdom.version>1.0</jdom.version>
@@ -209,7 +209,7 @@
         <pluto.version>2.1.0-M3</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
         <quartz.version>1.8.4</quartz.version>
-        <resource-server.version>1.0.31</resource-server.version>
+        <resource-server.version>1.0.35-M1</resource-server.version>
         <servlet-api.version>2.5</servlet-api.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring-framework.version>3.1.4.RELEASE</spring-framework.version>
@@ -770,6 +770,11 @@
                 <version>${casclient.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.jasig.cas</groupId>
+                <artifactId>cas-server-extension-clearpass</artifactId>
+                <version>${cas-server.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jasig.portal</groupId>
                 <artifactId>uportal-ear-deployer</artifactId>
                 <version>${uportal-ear-deployer.version}</version>
@@ -793,11 +798,34 @@
                 <groupId>org.jasig.resourceserver</groupId>
                 <artifactId>resource-server-api</artifactId>
                 <version>${resource-server.version}</version>
+                <exclusions>
+                    <exclusion>
+                         <groupId>org.slf4j</groupId>
+                         <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jasig.resourceserver</groupId>
+                <artifactId>resource-server-core</artifactId>
+                <version>${resource-server.version}</version>
+                <exclusions>
+                    <exclusion>
+                         <groupId>org.slf4j</groupId>
+                         <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jasig.resourceserver</groupId>
                 <artifactId>resource-server-utils</artifactId>
                 <version>${resource-server.version}</version>
+                <exclusions>
+                    <exclusion>
+                         <groupId>org.slf4j</groupId>
+                         <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jasig.service.persondir</groupId>
