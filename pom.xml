@@ -185,6 +185,7 @@
         <person-directory.version>1.5.2-M1</person-directory.version>
         <pluto.version>2.1.0-M3</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
+        <postgres.version>9.0-801.jdbc4</postgres.version>
         <quartz.version>1.8.4</quartz.version>
         <resource-server.version>1.0.31</resource-server.version>
         <servlet-api.version>2.5</servlet-api.version>
@@ -448,11 +449,6 @@
                 <artifactId>sqltool</artifactId>
                 <version>${hsqldb.version}</version>
             </dependency>
-            <dependency>
-                <groupId>${jdbc.groupId}</groupId>
-                <artifactId>${jdbc.artifactId}</artifactId>
-                <version>${jdbc.version}</version>
-            </dependency>  
             <dependency>
                 <groupId>org.javassist</groupId>
                 <artifactId>javassist</artifactId>
